@@ -31,8 +31,8 @@ public class EmployeeDao {
 		return (List<Employee>) employeeRepository.findAll();
 	}
 
-	public List<Employee> getEmployeesOfManager(String managerId) {
-		return employeeRepository.fetchSalaryOfAllSubordinates(managerId);
+	public List<Employee> getEmployeesOfManager(Long managerId) {
+		return employeeRepository.findByManagerId(managerId);
 	}
 	
 	

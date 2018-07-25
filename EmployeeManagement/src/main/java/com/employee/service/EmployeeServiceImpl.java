@@ -43,20 +43,25 @@ public class EmployeeServiceImpl {
 	return empDetails;
 	}
 
-	public void computeTotalSalaryOfsubordinates(String managerId) {
+	public Long computeTotalSalaryOfsubordinates(Long managerId) {
 		
 		// make a recursive call
 		salary = 0l;
-		Long finalSalary = calculateTotalSalary(managerId);
+		return calculateTotalSalary(managerId);
+		
 	}
 
-	private Long calculateTotalSalary(String managerId) {
+	private Long calculateTotalSalary(Long managerId) {
 		
 		List<Employee> emps = employeeDao.getEmployeesOfManager(managerId);
 		
-		emps.getAll
-		
-		emps.
+		if(!emps.isEmpty()) {
+			emps.forEach(e ->{
+				calculateTotalSalary(e.getEmployeeId());
+				salary = salary + e.getSalary();	
+			});
+		}
+		return salary;
 		
 	}
 	

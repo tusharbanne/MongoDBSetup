@@ -34,9 +34,8 @@ public class EmployeeDetailsController {
 	}
 
 	@RequestMapping(value="/calculateTotalSalaryOfAllSubordinatesOfEmployee", method=RequestMethod.GET)
-	public String calculateTotalSalaryOfAllSubordinatesOfEmployee(@RequestParam(value = "managerId") String managerId) {
-		empServiceImpl.computeTotalSalaryOfsubordinates(managerId);
-		return "done";
+	public Long calculateTotalSalaryOfAllSubordinatesOfEmployee(@RequestParam(value = "managerId") Long managerId) {
+		return empServiceImpl.computeTotalSalaryOfsubordinates(managerId);
 	}
 	
 	@RequestMapping(value="/getAll", method=RequestMethod.GET)
