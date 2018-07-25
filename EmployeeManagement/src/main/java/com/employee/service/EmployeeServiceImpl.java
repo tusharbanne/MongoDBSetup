@@ -16,6 +16,8 @@ public class EmployeeServiceImpl {
 	@Autowired
 	EmployeeDao employeeDao;
 	
+	Long salary = 0l;
+	
 	public String addNewEmployee(List<EmployeeDetailsDto> emps) {
 		
 		List<Employee> employees = new ArrayList<>();
@@ -39,6 +41,23 @@ public class EmployeeServiceImpl {
 		emps.forEach(e -> empDetails.add(new EmployeeDetailsDto(e.getEmployeeId(), e.getFirstName(), e.getLastName(),
 				e.getCityName(), e.getSalary(), e.getManagerId())));
 	return empDetails;
+	}
+
+	public void computeTotalSalaryOfsubordinates(String managerId) {
+		
+		// make a recursive call
+		salary = 0l;
+		Long finalSalary = calculateTotalSalary(managerId);
+	}
+
+	private Long calculateTotalSalary(String managerId) {
+		
+		List<Employee> emps = employeeDao.getEmployeesOfManager(managerId);
+		
+		emps.getAll
+		
+		emps.
+		
 	}
 	
 }
