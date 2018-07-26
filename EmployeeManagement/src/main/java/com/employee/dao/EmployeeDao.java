@@ -1,6 +1,7 @@
 package com.employee.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -33,6 +34,15 @@ public class EmployeeDao {
 
 	public List<Employee> getEmployeesOfManager(Long managerId) {
 		return employeeRepository.findByManagerId(managerId);
+	}
+
+	public Employee findEmployee(Long id) {
+		Optional<Employee> emp = employeeRepository.findById(id);
+		return emp.get();
+	}
+
+	public void updateEmployee(Employee employeeWhoseMangerIsToBeChanged) {
+		employeeRepository.save(employeeWhoseMangerIsToBeChanged);
 	}
 	
 	
